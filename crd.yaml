@@ -1,0 +1,44 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: kafkatopics.marcosflobo.com
+spec:
+  group: marcosflobo.com
+  scope: Namespaced
+  names:
+    plural: kafkatopics
+    singular: kafkatopic
+    shortNames:
+      - mykfkt
+    kind: KafkaTopic
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            metadata:
+              type: object
+              properties:
+                name:
+                  type: string
+            spec:
+              type: object 
+              properties:
+                kafka:
+                  type: object
+                  properties:
+                    topic:
+                      type: string
+                    servers:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          dns:
+                            type: string
+                        required: ["dns"]
+                  required: ["topic"]
+

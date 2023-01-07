@@ -1,0 +1,11 @@
+apiVersion: marcosflobo.com/v1
+kind: KafkaTopic
+metadata:
+  name: mykafkatopic # The name of the custom resource.
+spec:
+  kafka:
+    topic: "marcosflobo_example_messages"
+    servers:
+      - dns: kafka1.marcosflobo.com
+      - dns: kafka2.marcosflobo.com
+      - dns: kafka3.marcosflobo.com
